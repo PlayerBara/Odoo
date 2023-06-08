@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+	<data>
+		<record model="ir.module.category" id="videoclub.module_category_videoclub">
+			<field name="name">Videoclub</field>
+			<field name="description">Videoclub de todo tipo de peliculas</field>
+			<field name="sequence">100</field>		
+		</record>
+
+		<record model="res.groups" id="group_videoclub_usuario">
+			<field name="name">Usuario</field>
+			<field name="category_id" ref="videoclub.module_category_videoclub"></field>
+			<field name="comment">Usuarios Lectura</field>		
+		</record>
+
+		<record model="res.groups" id="group_videoclub_administrador">
+			<field name="name">Administrador</field>
+			<field name="category_id" ref="videoclub.module_category_videoclub"></field>
+			<field name="comment">Administrador r/w</field>
+			<field name="implied_ids" eval="[(4,ref('group_videoclub_usuario'))]"/>
+			<field name="users" eval="[(4,ref('base.user_root')), (4,ref('base.user_admin'))]"/>
+		</record>
+	</data>
+</odoo>

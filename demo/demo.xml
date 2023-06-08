@@ -1,0 +1,19 @@
+<odoo>
+    <data>
+<!--
+          <record id="pelicula" model="videoclub.pelicula">
+            <field name="name">C-001</field>
+            <field name="nombre">Los hermanos Bloom</field>
+	    <field name="director">Mark Rufalo</field>
+	    <field name="fecha_salida">12/09/2007</field>
+	    <field name="precio">10</field>
+	    <field name="alquiler_peliculas_ids">0</field>
+          </record>
+
+          <record id="object1" model="videoclub.videoclub">
+            <field name="name">Object 1</field>
+            <field name="value">10</field>
+          </record>
+-->
+    </data>
+</odoo>

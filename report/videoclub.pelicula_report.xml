@@ -1,0 +1,28 @@
+<odoo>
+	<record id="videoclub.pelicula_report" model="ir.actions.report">
+		<field name="name">Informe de peliculas</field>
+		<field name="model">videoclub.pelicula</field>
+		<field name="report_type">qweb-pdf</field>
+		<field name="report_name">videoclub.pelicula_report_view</field>
+		<field name="report_file">videoclub.pelicula_report</field>
+		<field name="binding_model_id" ref="model_videoclub_pelicula"/>
+		<field name="binding_type">report</field>
+	</record>
+	<template id="pelicula_report_view">
+		<t t-call="web.html_container">
+			<t t-call="web.external_layout">
+				<h1>Peliculas</h1><br/>
+				<t t-foreach="docs" t-as="pelicula">
+					<ul>
+						<li>Código: <span t-field="pelicula.name"/></li>
+						<li>Nombre: <span t-field="pelicula.nombre"/></li>
+						<li>Director: <span t-field="videoclub.director"/></li>
+						<li>Fecha de salida: <span t-field="videoclub.fecha_salida"/></li>
+						<li>Precio: <span t-field="pelicula.precio"/></li>
+						<li>Cliente <span t-field="alquiler_peliculas_ids"/></li>
+					</ul>
+				</t>
+			</t>		
+		</t>
+	</template>
+</odoo>

@@ -1,0 +1,257 @@
+<odoo>
+  <data>
+    <!-- Vistas de la academia-->
+
+<record model="ir.ui.view" id="videoclub.pelicula_list_view">
+	<field name="name">videoclub.pelicula.view.tree</field>
+	<field name="model">videoclub.pelicula</field>
+	<field name="arch" type="xml">
+		<tree>
+			<field name="name"/>
+			<field name="nombre"/>	
+			<field name="director"/>
+			<field name="fecha_salida"/>	
+			<field name="precio"/>				
+			<field name="alquiler_peliculas_ids"/>		
+		</tree>
+	</field>
+</record>
+
+<record model="ir.ui.view" id="videoclub.cliente_list_view">
+	<field name="name">videoclub.cliente.view.tree</field>
+	<field name="model">videoclub.cliente</field>
+	<field name="arch" type="xml">
+		<tree>
+			<field name="name"/>			
+			<field name="nombre"/>				
+			<field name="telefono"/>
+			<field name="peliculas_ids"/>	
+		</tree>
+	</field>
+</record>
+
+<!-- Campos de búsqueda -->
+
+<record model="ir.ui.view" id="videoclub.pelicula_search_view">
+	<field name="name">videoclub.pelicula.view.search</field>
+	<field name="model">videoclub.pelicula</field>
+	<field name="arch" type="xml">
+		<search>
+			<field name="name"/>
+			<field name="nombre"/>	
+			<field name="director"/>
+			<field name="fecha_salida"/>	
+			<field name="precio"/>			
+			<field name="alquiler_peliculas_ids"/>
+			<group>
+				<filter name="group_by_name" string="name" context="{'group_by':'name'}"></filter>
+			</group>		
+		</search>	
+	</field>
+</record>
+
+<record model="ir.ui.view" id="videoclub.cliente_search_view">
+	<field name="name">videoclub.cliente.view.search</field>
+	<field name="model">videoclub.cliente</field>
+	<field name="arch" type="xml">
+		<search>
+			<field name="name"/>			
+			<field name="nombre"/>				
+			<field name="telefono"/>
+			<field name="peliculas_ids"/>	
+			<group>
+				<filter name="group_by_name" string="name" context="{'group_by':'name'}"></filter>
+			</group>			
+		</search>	
+	</field>
+</record>
+
+<!-- Form -->
+
+<record model="ir.ui.view" id="videoclub.pelicula_form_view">
+	<field name="name">videoclub.pelicula.view.form</field>
+	<field name="model">videoclub.pelicula</field>
+	<field name="arch" type="xml">
+		<form string="Información de la pelicula">
+			<sheet>	
+				<table>
+					<tr>
+						<th>
+							Codigo Pelicula: <field name="name"/>
+						</th>
+					</tr>
+					<tr>
+						<td>
+							Nombre: <field name="nombre"/>				
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Director: <field name="director" />
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Fecha de salida: <field name="fecha_salida"/>	
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Precio: <field name="precio"/>	
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Cliente <field name="alquiler_peliculas_ids"/>
+						</td>
+					</tr>
+				</table>		
+			</sheet>
+		</form>
+	</field>	
+</record>
+
+<record model="ir.ui.view" id="videoclub.cliente_form_view">
+	<field name="name">videoclub.cliente.view.form</field>
+	<field name="model">videoclub.cliente</field>
+	<field name="arch" type="xml">
+		<form string="Información del cliente">
+			<sheet>
+				<table>
+					<tr>
+						<th>
+							Código cliente: <field name="name"/>
+						</th>		
+					</tr>
+					<tr>
+						<td>
+							Nombre: <field name="nombre"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Telefono: <field name="telefono"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Peliculas <field name="peliculas_ids"/>
+						</td>
+					</tr>
+				</table>			
+			</sheet>
+		</form>
+	</field>	
+</record>
+
+<!-- Calendario -->
+
+<record model="ir.ui.view" id="videoclub.pelicula_calendar_view">
+	<field name="name">videoclub.pelicula.view.calendar</field>
+	<field name="model">videoclub.pelicula</field>
+	<field name="arch" type="xml">
+		<calendar string="Fecha de salida" date_start="fecha_salida" color="fecha_salida" mode="month">
+			<field name="name"/>
+			<field name="nombre"/>	
+			<field name="director"/>
+			<field name="fecha_salida"/>	
+			<field name="precio"/>	
+		</calendar>
+	</field>
+</record>
+
+
+<!-- Definicion de menus -->
+
+<record model="ir.actions.act_window" id="videoclub.pelicula_action_window">
+	<field name="name">Pelicula</field>
+	<field name="res_model">videoclub.pelicula</field>
+	<field name="view_mode">tree,form,calendar</field>
+</record>
+
+<record model="ir.actions.act_window" id="videoclub.cliente_action_window">
+	<field name="name">Cliente</field>
+	<field name="res_model">videoclub.cliente</field>
+	<field name="view_mode">tree,form</field>
+</record>
+
+<menuitem name="Videoclub" id="videoclub.menu_root" web_icon="videoclub,static/description.png/"/>
+
+<menuitem name="Pelicula" id="videoclub.menu_pelicula" parent="videoclub.menu_root"/>
+<menuitem name="Cliente" id="videoclub.menu_cliente" parent="videoclub.menu_root"/>	
+
+<menuitem name="Lista de peliculas" id="videoclub.menu_pelicula_list" parent="videoclub.menu_pelicula" action="videoclub.pelicula_action_window"/>
+<menuitem name="Lista de clientes" id="videoclub.menu_cliente_list" parent="videoclub.menu_cliente" action="videoclub.cliente_action_window"/>
+   
+  </data>
+</odoo>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="videoclub.list">
+      <field name="name">videoclub list</field>
+      <field name="model">videoclub.videoclub</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="videoclub.action_window">
+      <field name="name">videoclub window</field>
+      <field name="res_model">videoclub.videoclub</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="videoclub.action_server">
+      <field name="name">videoclub server</field>
+      <field name="model_id" ref="model_videoclub_videoclub"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="videoclub" id="videoclub.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="videoclub.menu_1" parent="videoclub.menu_root"/>
+    <menuitem name="Menu 2" id="videoclub.menu_2" parent="videoclub.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="videoclub.menu_1_list" parent="videoclub.menu_1"
+              action="videoclub.action_window"/>
+    <menuitem name="Server to list" id="videoclub" parent="videoclub.menu_2"
+              action="videoclub.action_server"/>
+-->

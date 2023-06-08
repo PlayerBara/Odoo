@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_videoclub_pelicula_usuario,videoclub.pelicula.usuario,model_videoclub_pelicula,group_videoclub_usuario,1,1,1,1
+access_videoclub_pelicula_administrador,videoclub.pelicula.administrador,model_videoclub_pelicula,group_videoclub_administrador,1,1,1,1
+access_videoclub_cliente_usuario,videoclub.cliente.usuario,model_videoclub_cliente,group_videoclub_usuario,1,1,1,1
+access_videoclub_cliente_administrador,videoclub.cliente.administrador,model_videoclub_cliente,group_videoclub_administrador,1,1,1,1
