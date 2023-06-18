@@ -1,6 +1,6 @@
 <odoo>
   <data>
-    <!-- Vistas de la academia-->
+    <!-- Vistas del videoclub-->
 
 <record model="ir.ui.view" id="videoclub.pelicula_list_view">
 	<field name="name">videoclub.pelicula.view.tree</field>
